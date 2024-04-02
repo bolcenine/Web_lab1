@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Обчислення математичного виразу</title>
+</head>
+<body>
+  <h1>Результат:</h1>
+  <p id="result"></p>
+
+  <script>
+    // Отримати значення змінних
+    const a = -5.69;
+    const b = 9.2;
+
+    // Обчислити вираз
+    const result = Math.sqrt(a + b**2) + Math.sin(b) - Math.cos(b**2) + 6 * Math.tan(a**2);
+
+    // Відобразити результат
+    document.getElementById("result").innerHTML = result.toFixed(4);
+  </script>
+</body>
+</html>
