@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сума перших та останніх цифр числа</title>
+</head>
+<body>
+  <h1>Сума перших та останніх цифр числа</h1>
+  <p>Введіть число:</p>
+  <input type="number" id="number" name="number">
+  <p>Введіть кількість цифр:</p>
+  <input type="number" id="count" name="count">
+  <button onclick="calculate()">Обчислити</button>
+
+  <p id="first-sum"></p>
+  <p id="last-sum"></p>
+
+  <script>
+    function calculate() {
+      // Отримати значення з input
+      const number = parseInt(document.getElementById("number").value);
+      const count = parseInt(document.getElementById("count").value);
+
+      // Перевірити значення
+      if (isNaN(number) || isNaN(count) || count <= 0 || count >= number.toString().length) {
+        alert("Невірні значення!");
+        return;
+      }
+
+      // Знайти суму перших m цифр
+      let firstSum = 0;
+      for (let i = 0; i < count; i++) {
+        firstSum += number % 10;
+        number = Math.floor(number / 10);
+      }
+
+      // Знайти суму останніх m цифр
+      let lastSum = 0;
+      let numCopy = number;
+      for (let i = 0; i < count; i++) {
+        lastSum += numCopy % 10;
+        numCopy = Math.floor(numCopy / 10);
+      }
+
+      // Відобразити результат
+      document.getElementById("first-sum").innerHTML = `Сума перших ${count} цифр: ${firstSum}`;
+      document.getElementById("last-sum").innerHTML = `Сума останніх ${count} цифр: ${lastSum}`;
+    }
+  </script>
+</body>
+</html>
