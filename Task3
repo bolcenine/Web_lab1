@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Заміна додатніх чисел нулями</title>
+</head>
+<body>
+  <h1>Заміна додатніх чисел нулями</h1>
+  <p>Введіть масив чисел:</p>
+  <input type="text" id="array" name="array">
+  <button onclick="replace()">Замінити</button>
+
+  <p id="result"></p>
+
+  <script>
+    function replace() {
+      // Отримати значення масиву
+      const array = document.getElementById("array").value.split(",").map(Number);
+
+      // Замінити додатні числа нулями
+      for (let i = 0; i < array.length; i++) {
+        if (array[i] > 0) {
+          array[i] = 0;
+        }
+      }
+
+      // Відобразити результат
+      document.getElementById("result").innerHTML = `Результат: ${array.join(", ")}`;
+    }
+  </script>
+</body>
+</html>
