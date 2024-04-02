@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Заміна від'ємних елементів масиву квадратами</title>
+</head>
+<body>
+  <h1>Заміна від'ємних елементів масиву квадратами</h1>
+  <p>Введіть масив (розмір 8x4):</p>
+  <textarea id="array" name="array" rows="8" cols="40"></textarea>
+  <button onclick="replace()">Замінити</button>
+
+  <p id="result"></p>
+
+  <script>
+    function replace() {
+      // Отримати значення масиву
+      const array = document.getElementById("array").value.split(",").map(Number);
+
+      // Перетворити масив на двовимірний
+      const matrix = [];
+      for (let i = 0; i < array.length; i += 4) {
+        matrix.push(array.slice(i, i + 4));
+      }
+
+      // Замінити від'ємні елементи квадратами
+      for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+          if (matrix[i][j] < 0) {
+            matrix[i][j] = matrix[i][j] ** 2;
+          }
+        }
+      }
+
+      // Відобразити результат
+      const result = matrix.map(row => row.join(", ")).join("\n");
+      document.getElementById("result").innerHTML = `Результат: \n${result}`;
+    }
+  </script>
+</body>
+</html>
