@@ -1,0 +1,44 @@
+Друк слів, що зустрічаються один раз
+HTML:
+
+HTML
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Друк слів, що зустрічаються один раз</title>
+</head>
+<body>
+  <h1>Друк слів, що зустрічаються один раз</h1>
+  <p>Введіть послідовність слів:</p>
+  <input type="text" id="words" name="words">
+  <button onclick="printUnique()">Друкувати</button>
+
+  <p id="result"></p>
+
+  <script>
+    function printUnique() {
+      // Отримати значення послідовності слів
+      const words = document.getElementById("words").value.split(" ");
+
+      // Створити словник для зберігання слів та їх частоти
+      const wordCounts = {};
+      for (const word of words) {
+        wordCounts[word] = (wordCounts[word] || 0) + 1;
+      }
+
+      // Зберегти слова, що зустрічаються один раз
+      const uniqueWords = [];
+      for (const word in wordCounts) {
+        if (wordCounts[word] === 1) {
+          uniqueWords.push(word);
+        }
+      }
+
+      // Відобразити результат
+      document.getElementById("result").innerHTML = `Слова, що зустрічаються один раз: ${uniqueWords.join(", ")}`;
+    }
+  </script>
+</body>
+</html>
