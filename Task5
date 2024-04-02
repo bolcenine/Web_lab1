@@ -1,0 +1,49 @@
+HTML:
+
+HTML
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Різниця мінімальних елементів масивів</title>
+</head>
+<body>
+  <h1>Різниця мінімальних елементів масивів</h1>
+  <p>Введіть масив A(7):</p>
+  <input type="text" id="arrayA" name="arrayA">
+  <p>Введіть масив B(7):</p>
+  <input type="text" id="arrayB" name="arrayB">
+  <button onclick="findDifference()">Знайти різницю</button>
+
+  <p id="result"></p>
+
+  <script>
+    function findDifference() {
+      // Отримати значення масивів
+      const arrayA = document.getElementById("arrayA").value.split(",").map(Number);
+      const arrayB = document.getElementById("arrayB").value.split(",").map(Number);
+
+      // Знайти мінімальні елементи
+      let minA = arrayA[0];
+      let minB = arrayB[0];
+      for (let i = 1; i < arrayA.length; i++) {
+        if (arrayA[i] < minA) {
+          minA = arrayA[i];
+        }
+      }
+      for (let i = 1; i < arrayB.length; i++) {
+        if (arrayB[i] < minB) {
+          minB = arrayB[i];
+        }
+      }
+
+      // Обчислити різницю
+      const difference = minA - minB;
+
+      // Відобразити результат
+      document.getElementById("result").innerHTML = `Різниця мінімальних елементів: ${difference}`;
+    }
+  </script>
+</body>
+</html>
